@@ -7,9 +7,11 @@ function App() {
   return (
     <div>
      <Bone>
-      <Switch>
-        <Route path='/' exact component={HomePage} /> 
-      </Switch>
+        <div className='container'>
+        <Switch>
+          <Route path='/' exact component={HomePage} /> 
+        </Switch>
+        </div>
      </Bone>
     </div>
   );

@@ -20,7 +20,7 @@ class Navbar extends Component  {
                     <a href="0" className="brand-logo">VClique</a>
                     <a href="0" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <ul className="right hide-on-med-and-down">
-                            <NavUrl link='/home' navname='Home'/>
+                            <NavUrl link='/' navname='Home'/>
                             <NavUrl link='/login' navname='Login'/>
                             <NavUrl link='/register' navname='Register'/>
                             <NavUrl link='/info' navname='About the App' />
@@ -30,7 +30,7 @@ class Navbar extends Component  {
             </nav>
 
             <ul className="sidenav" id="mobile-demo">
-                <NavUrl link='/home' navname='Home'/>
+                <NavUrl link='/' navname='Home'/>
                 <NavUrl link='/login' navname='Login'/>
                 <NavUrl link='/register' navname='Register'/>
                 <NavUrl link='/info' navname='About the App' />
