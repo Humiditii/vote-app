@@ -18,22 +18,21 @@ const homepage = props => {
                     </span>);
     return (
         <Aux>
-            <div className={classes.homepage} >
-                <div className='container-fluid'>
-                    <ImageUI width ='700' imagName={HomeImage}  />
-                    {/* <div className='z-depth-5' >
-
-                    </div> */}
-                    <h3 className={classes.hometext} >Welcome to VClique!</h3>
-                    <p className={classes.paragraphtext}>
-                        edhejd chc jenkdckw ce j jwe chd cwkc dkcnwec wdcdkw cer cwdcwj cer we cwd ewcc
-                        ejc djc wd cjc wecwdc jd vhefn kv uruewbvwec iuvuebvhf dvibef id fiu efu dihf efi 
-                        djc dh cd h viuedv 
-                    </p>
-                    <div align='center' >
-                        <Button btncolour='indigo' btnname='Get STarted'  iconname='directions_bike' whereto='/register' />
+            <div className='container' >
+                <div className={classes.homepage} >
+                    <div className='container-fluid'>
+                        <ImageUI width ='700' imagName={HomeImage}  />
+                        <h3 className={classes.hometext} >Welcome to VClique!</h3>
+                        <p className={classes.paragraphtext}>
+                            edhejd chc jenkdckw ce j jwe chd cwkc dkcnwec wdcdkw cer cwdcwj cer we cwd ewcc
+                            ejc djc wd cjc wecwdc jd vhefn kv uruewbvwec iuvuebvhf dvibef id fiu efu dihf efi 
+                            djc dh cd h viuedv efjec jn cidnvudniownioeniornfoiewnfiownfoi ewuw vuwenuwenowie vdihvbdyhvbec viuedvj
+                        </p>
+                        <div align='center' >
+                            <Button btncolour='indigo' btnname='Get STarted'  iconname='directions_bike' whereto='/register' />
+                        </div>
+                        
                     </div>
-                    
                 </div>
             </div>
 

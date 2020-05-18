@@ -1,7 +1,8 @@
 import React , { Component} from 'react';
 import Aux from '../../hoc/Auxillary';
 import NavUrl from './NavUrl/NavUrl';
-import M from 'materialize-css'
+import M from 'materialize-css';
+import {NavLink} from 'react-router-dom'
 
 class Navbar extends Component  {
     componentDidMount(){
@@ -17,8 +18,8 @@ class Navbar extends Component  {
 
             <nav>
                 <div className="nav-wrapper  indigo lighten-1">
-                    <a href="0" className="brand-logo">VClique</a>
-                    <a href="0" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                    <NavLink to="0" className="brand-logo">VClique</NavLink>
+                    <NavLink to="0" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></NavLink>
                         <ul className="right hide-on-med-and-down">
                             <NavUrl link='/' navname='Home'/>
                             <NavUrl link='/login' navname='Login'/>
@@ -29,7 +30,7 @@ class Navbar extends Component  {
                 </div>
             </nav>
 
-            <ul className="sidenav" id="mobile-demo">
+            <ul className="sidenav sidenav-close" id="mobile-demo">
                 <NavUrl link='/' navname='Home'/>
                 <NavUrl link='/login' navname='Login'/>
                 <NavUrl link='/register' navname='Register'/>

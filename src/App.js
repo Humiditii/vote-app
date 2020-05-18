@@ -1,17 +1,20 @@
 import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 import Bone from './containers/Bone/Bone';
 import HomePage from './containers/pages/HomePage/HomePage';
-import { Route, Switch } from 'react-router-dom';
+import Signup from './containers/pages/AuthPages/Signup/Signup';
+import Signin from './containers/pages/AuthPages/Signin/Signin';
+
 
 function App() {
   return (
     <div>
      <Bone>
-        <div className='container'>
         <Switch>
+          <Route path='/register' component={Signup} />
+          <Route path='/login' component={Signin} />
           <Route path='/' exact component={HomePage} /> 
         </Switch>
-        </div>
      </Bone>
     </div>
   );
