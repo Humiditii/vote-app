@@ -8,7 +8,8 @@ import ImageUi from '../../../../components/Ui/ImageuI/ImageUi';
 import Img1 from '../../../../assets/images/vote3.png';
 import classes from './Signup.module.css';
 import Preloader from '../../../../components/Ui/Preloader/Preloader';
-import {signUp} from '../../../../store/actions/auth';
+import {signUp, mismatch} from '../../../../store/actions/auth';
+
 
 
 class Signup extends Component {
@@ -17,7 +18,8 @@ class Signup extends Component {
         email : null,
         username : null,
         phone: null,
-        password: null
+        password: null,
+        confirmPwd: null
     }
 
     inputHandler = (event, item ) => {
@@ -30,21 +32,27 @@ class Signup extends Component {
 
     onSubmitHandler = (event) => {
         event.preventDefault();
-        const {email, username, phone, password} = this.state;
-        this.props.onSignUp(email, username, phone, password);
+        const {email, username, phone, password, confirmPwd} = this.state;
+        if( confirmPwd !== password ){
+            this.props.mismatch();
+        }else{
+            this.props.onSignUp(email, username, phone, password);
+        }
+        
     }
 
     render(){
         const config = {
-            name: ['email', 'username','phone',  'password'],
-            type: ['text', 'text', 'number', 'password'],
-            icon: ['mail', 'account_circle', 'phone', 'security']
+            name: ['email', 'username','phone',  'password', 'confirmPwd'],
+            type: ['text', 'text', 'number', 'password', 'password'],
+            icon: ['mail', 'account_circle', 'phone', 'security', 'security']
         }
         let form = (
             <Aux>
                 <div className='row z-depth-5'>
                 <h5 className={classes.register} align='center' >Get Started With VClique</h5>
                 <p align='center' style={{color:'red'}} >{ this.props.signupMsg ? 'Email already exist' : null }</p>
+                <p align='center' style={{color:'red'}} >{ this.props.pwdMismatch }</p>
                 <p align='center' style={{color:'red'}} >{ this.props.error}</p>
                         <form className="col s12" onSubmit={this.onSubmitHandler} >
                             
@@ -88,13 +96,15 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         toBeRedirected: state.auth.toBeRedirected,
-        signupMsg: state.auth.signupMsg
+        signupMsg: state.auth.signupMsg,
+        pwdMismatch: state.auth.mismatch
     }
 }
 
 const mapPropsToState = dispatch => {
     return {
-        onSignUp:(email, username,phone,password) => { dispatch(signUp( email, username,phone,password )) }
+        onSignUp:(email, username,phone,password) => { dispatch(signUp( email, username,phone,password )) },
+        mismatch: () => { dispatch(mismatch()) }
     }
 }
 

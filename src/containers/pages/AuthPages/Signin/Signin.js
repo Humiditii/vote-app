@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import {connect} from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import Aux from '../../../../hoc/Auxillary';
 import TextInputs from '../../../../components/Ui/Forms/TextInput/TextInput';
 import Button from '../../../../components/Ui/Button/Button'
@@ -64,6 +64,9 @@ class Signin extends Component {
 
         if( this.props.loading){
             form = <Preloader />
+        }
+        if( this.props.token ){
+            return <Redirect to='/dashboard' />
         }
         return (
             <Aux>

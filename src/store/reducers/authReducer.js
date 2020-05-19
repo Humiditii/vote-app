@@ -7,7 +7,15 @@ const initialState = {
     userId: null,
     authMsg: null,
     signupMsg: null,
-    toBeRedirected: false
+    toBeRedirected: false,
+    mismatch: null
+}
+
+const mismatch = (state, action) => {
+    return {
+        ...state,
+        mismatch: 'Password Mismatch'
+    }
 }
 
 const authStart = (state, action) => {
@@ -62,6 +70,7 @@ const reducer = (state=initialState, action) => {
         case actionTypes.AUTH_SUCCESS: return authSuccess(state, action);
         case actionTypes.SIGNUP: return authSignUp(state, action);
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
+        case actionTypes.MISMATCH : return mismatch(state, action);
         default:
             return state;
     }

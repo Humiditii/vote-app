@@ -17,6 +17,12 @@ export const authSignUp = (signupMsg) => {
     };
 };
 
+export const mismatch = () => {
+    return {
+        type: actionTypes.MISMATCH
+    }
+}
+
 export const authSuccess = (userId, token, role, message) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
@@ -47,6 +53,8 @@ export const logout = () => {
         type: actionTypes.AUTH_LOGOUT
     }
 }
+
+
 
 export const checkAuthTimeout = (expiresIn) => {
     return dispatch => {
@@ -130,5 +138,29 @@ export const signIn = (username,password) => {
             console.log(err)
             dispatch(authFail(err.message));
         });
+    }
+}
+
+export const checkAuthState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if(!token){
+            dispatch(logout());
+            //console.log('First logout excecuted');
+        }else{
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if(expirationDate <= new Date()){
+                dispatch(logout());
+                //console.log('Second logout excecuted');
+            }else{
+                const userId = localStorage.getItem('userId');
+                const message = localStorage.getItem('message');
+                dispatch(authSuccess(userId, token, message));
+                //dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime())/1000));
+                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) ));
+                //console.log((expirationDate.getTime() - new Date().getTime()) / 1000);
+                //console.log('worked to this extent');
+            }
+        }
     }
 }
